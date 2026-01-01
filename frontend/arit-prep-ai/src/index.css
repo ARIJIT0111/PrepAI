@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Arapey:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Libertinus+Mono&family=Oswald:wght@200..700&display=swap');
+@import "tailwindcss";
+
+/* Base Styles */
+@layer base {
+  html {
+    font-family: "Arapey", serif; /* Main font */
+  }
+
+  body {
+    background-color: #fcfbfc;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Arapey", serif;
+  }
+
+  code, pre {
+    font-family: "Libertinus Mono", monospace;
+  }
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 100, 100, 0.4);
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Animations and Utilities */
+@layer utilities {
+  /* Text shine animation */
+  @keyframes text-shine {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+  }
+
+  .animate-text-shine {
+    background: linear-gradient(90deg, #ff9324, #e99a4b, #ff9324);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: text-shine 3s ease-in-out infinite alternate;
+  }
+
+  /* Blob Animations */
+  @keyframes blob1 {
+    0%, 100% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -60px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+  }
+  @keyframes blob2 {
+    0%, 100% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(-40px, 60px) scale(1.05); }
+    66% { transform: translate(20px, -40px) scale(0.95); }
+  }
+  @keyframes blob3 {
+    0%, 100% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(20px, 140px) scale(1.15); }
+    66% { transform: translate(-30px, -30px) scale(0.85); }
+  }
+
+  .animate-blob1 { animation: blob1 8s ease-in-out infinite; }
+  .animate-blob2 { animation: blob2 10s ease-in-out infinite; }
+  .animate-blob3 { animation: blob3 12s ease-in-out infinite; }
+
+  /* Input Box */
+  .input-box {
+    @apply w-full flex justify-between gap-3 text-sm text-black bg-gray-50/50 rounded px-4 py-3 mb-4 mt-3 border-gray-100 outline-none focus-within:border-orange-300;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply w-full flex items-center justify-center gap-3 text-sm font-medium text-white bg-black shadow-lg shadow-orange-600/5 p-[10px] rounded-md my-1 hover:bg-orange-600/15 hover:text-black cursor-pointer;
+  }
+
+  .btn-small {
+    @apply flex items-center justify-center gap-3 text-sm font-semibold text-white px-7 py-2 rounded-lg transition-colors cursor-pointer hover:shadow-2xl hover:shadow-orange-300;
+    @apply bg-gradient-to-r from-[#ff9324] to-[#e99a4b] hover:bg-black hover:text-white;
+  }
+}
